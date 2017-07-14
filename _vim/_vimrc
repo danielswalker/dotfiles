@@ -1,0 +1,222 @@
+" ==========================================================
+" Pathogen - Allows us to organize our vim plugins
+" ==========================================================
+" Load pathogen with docs for all plugins
+set nocompatible              " Don't be compatible with vi
+filetype off
+call pathogen#infect()
+call pathogen#helptags()
+
+" ==========================================================
+" Basic Settings
+" ==========================================================
+syntax enable                 " syntax highlighing
+filetype on                   " try to detect filetypes
+filetype plugin indent on     " enable loading indent file for filetype
+set title                     " show title in console title bar
+set autoread                  " update the open file if it has been rewritten but unmodified in vim
+au CursorHold * checktime     " check for updates to files whenever the cursor stops moving for a couple of seconds
+set clipboard=unnamed         " allow y and p to use the OSX clipboard
+
+" ==========================================================
+" Visual Appearance
+" ==========================================================
+set background=dark
+if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
+    let g:solarized_termcolors= 16 "| 256 - 16 default. Use the 16 colors of your terminal emulator if it is solarized, a degraded 256 representation if it is not.
+    let g:solarized_termtrans= 0 "| 1 - 0 default. Use the default terminal color as background to enable transparency.
+    color solarized             " Load a colorscheme
+endif
+set showmode                    " Display the current mode
+set cursorline                  " Highlight current line
+highlight clear SignColumn      " SignColumn should match background
+highlight clear LineNr          " Current line number row will have same background color in relative mode
+"highlight clear CursorLineNr    " Remove highlight color from current line number
+set linespace=0                 " No extra spaces between rows
+set number                      " Line numbers on
+set showmatch                   " Show matching brackets/parenthesis
+set winminheight=0              " Windows can be 0 line high
+set wildmenu                    " Show list instead of just completing
+set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
+set scrolljump=5                " Lines to scroll when cursor leaves screen
+set scrolloff=3                 " Minimum lines to keep above and below cursor
+set foldenable                  " Auto fold code
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+if exists("&colorcolumn")
+    set colorcolumn=79
+endif
+
+if has('cmdline_info')
+    set ruler                   " Show the ruler
+    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+    set showcmd                 " Show partial commands in status line and selected characters/lines in visual mode
+endif
+
+if has('statusline')
+    set laststatus=2            " Always show statusline, even if only 1 window.
+    set statusline=%<%f\                     " Filename
+    set statusline+=%w%h%m%r                 " Options
+    set statusline+=\ [%{&ff}/%Y]            " Filetype
+    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
+
+" ==========================================================
+" Editing and Cursor Navigation
+" ==========================================================
+set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
+set smartcase                   " Case sensitive when uc present
+set backspace=indent,eol,start  " Backspace for dummies
+set incsearch                   " Find as you type search
+set hlsearch                    " Highlight search terms
+set ignorecase                  " Case insensitive search
+set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+set nostartofline           " Avoid moving cursor to BOL when jumping around
+set virtualedit=block       " Let cursor move past the last char in <C-v> mode
+set scrolloff=3             " Keep 3 context lines above and below the cursor
+set backspace=2             " Allow backspacing over autoindent, EOL, and BOL
+set showmatch               " Briefly jump to a paren once it's balanced
+set nowrap                  " don't wrap text
+set linebreak               " don't wrap textin the middle of a word
+set autoindent              " always set autoindenting on
+set smartindent             " use smart indent if there is no indent file
+set tabstop=4               " <tab> inserts 4 spaces
+set shiftwidth=4            " but an indent level is 2 spaces wide.
+set softtabstop=4           " <BS> over an autoindent deletes both spaces.
+set expandtab               " Use spaces, not tabs, for autoindent/tab key.
+set shiftround              " rounds indent to a multiple of shiftwidth
+set matchpairs+=<:>         " show matching <> (html mainly) as well
+set foldmethod=indent       " allow us to fold on indents
+set foldlevel=99            " don't fold by default
+
+" ==========================================================
+" Key Remapping
+" ==========================================================
+let mapleader=","             " change the leader to be a comma vs slash
+
+" Wrapped lines goes down/up to next row, rather than next line in file.
+noremap j gj
+noremap k gk
+
+" Yank from the cursor to the end of the line, to be consistent with C and D.
+nnoremap Y y$
+
+" Most prefer to toggle search highlighting rather than clear the current
+" search results.
+nmap <silent> <leader>/ :set invhlsearch<CR>
+
+" Visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+
+" Don't be a vimnoob
+nnoremap <Up> <nop>
+nnoremap <Down> <nop>
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
+inoremap <Up> <nop>
+inoremap <Down> <nop>
+inoremap <Left> <nop>
+inoremap <Right> <nop>
+
+" Split navigation
+set splitbelow
+set splitright
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-l> <c-w><c-l>
+nnoremap <c-h> <c-w><c-h>
+
+" Quick edit .vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" ==========================================================
+" Plugins
+" ==========================================================
+
+" Syntastic
+"let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_checkers = ['pylint', 'pep8', 'pyflakes']
+"let g:syntastic_python_checkers = ['pylint', 'flake8', 'pep8', 'pyflakes']
+
+" Tagbar
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
+
+" Matlab
+autocmd BufEnter *.m    compiler mlint
+source $VIMRUNTIME/macros/matchit.vim
+
+" NerdTree
+if isdirectory(expand("~/.vim/bundle/nerdtree"))
+    map <leader>n :NERDTreeToggle<CR>
+    let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+    let NERDTreeChDirMode=0
+    let NERDTreeQuitOnOpen=1
+    let NERDTreeMouseMode=2
+    let NERDTreeShowHidden=1
+    let NERDTreeKeepTreeInNewTab=1
+    let g:nerdtree_tabs_open_on_gui_startup=0
+endif
+
+" UndoTree
+if isdirectory(expand("~/.vim/bundle/undotree/"))
+    nnoremap <Leader>u :UndotreeToggle<CR>
+    " If undotree is opened, it is likely one wants to interact with it.
+    let g:undotree_SetFocusWhenToggle=1
+endif
+
+" ---------------------------------- "
+" Configure Ultisnips and YouCompleteMe
+" ---------------------------------- "
+let g:ycm_filetype_blacklist = {
+        \ 'tagbar' : 1,
+        \ 'qf' : 1,
+        \ 'notes' : 1,
+        \ 'markdown' : 1,
+        \ 'unite' : 1,
+        \ 'text' : 1,
+        \ 'vimwiki' : 1,
+        \ 'pandoc' : 1,
+        \ 'infolog' : 1,
+        \ 'mail' : 1,
+        \ 'python' : 1
+        \}
+" enable completion from tags
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_key_invoke_completion = '<C-Space>'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/ycm_default_flags.py'
+"let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" remap Ultisnips for compatibility for YCM
+let g:UltiSnipsExpandTrigger = '<C-j>'
+let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+let g:UltiSnipsListSnippets = '<c-t>'
+
+" Goto definition
+map <leader>g :YcmCompleter GoTo<CR>
+
+" Extra key mapping for the pop up menu
+inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+set completeopt=menuone,longest,preview
+set pumheight=6             " Keep a small completion window
+
+" Autoclose
+"nmap <Leader>x <Plug>ToggleAutoCloseMappings
+
+" Rainbow
+map <leader>f :RainbowToggle <CR>
+let g:rainbow_active = 0
+""call rainbow#load()
+
+" Jedi VIM
+let g:jedi#usages_command = '<leader>v'
+let g:jedi#show_call_signatures = 1
+"let g:jedi#popup_select_first = 1

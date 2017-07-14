@@ -40,3 +40,6 @@
 [submodule "_vim/bundle/vim-tmux-navigator"]
 	path = _vim/bundle/vim-tmux-navigator
 	url = git@github.com:christoomey/vim-tmux-navigator.git
+[submodule "ubuntu_setup/gnome-terminal-colors-solarized"]
+	path = ubuntu_setup/gnome-terminal-colors-solarized
+	url = git@github.com:Anthony25/gnome-terminal-colors-solarized.git

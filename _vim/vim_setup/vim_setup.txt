@@ -49,9 +49,4 @@ create ~/.tmux.conf:
 
 Ubuntu 12.04
 
-git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git
-cd gnome-terminal-colors-solarized/
-./install.sh
-change .bashrc dircolors reference to:
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors/dircolors)" || eval "$(dircolors -b)"
+Follow the directions in the ubuntu_setup folder to enable solarized terminal.

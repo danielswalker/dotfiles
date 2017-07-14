@@ -21,6 +21,7 @@ set clipboard=unnamed         " allow y and p to use the OSX clipboard
 " ==========================================================
 " Visual Appearance
 " ==========================================================
+set t_Co=16
 set background=dark
 if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
     let g:solarized_termcolors= 16 "| 256 - 16 default. Use the 16 colors of your terminal emulator if it is solarized, a degraded 256 representation if it is not.

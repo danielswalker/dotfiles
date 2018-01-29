@@ -84,8 +84,8 @@ set linebreak               " don't wrap textin the middle of a word
 set autoindent              " always set autoindenting on
 set smartindent             " use smart indent if there is no indent file
 set tabstop=4               " <tab> inserts 4 spaces
-set shiftwidth=4            " but an indent level is 2 spaces wide.
-set softtabstop=4           " <BS> over an autoindent deletes both spaces.
+set shiftwidth=2            " but an indent level is 2 spaces wide.
+set softtabstop=2           " <BS> over an autoindent deletes both spaces.
 set expandtab               " Use spaces, not tabs, for autoindent/tab key.
 set shiftround              " rounds indent to a multiple of shiftwidth
 set matchpairs+=<:>         " show matching <> (html mainly) as well
@@ -172,36 +172,36 @@ endif
 " ---------------------------------- "
 " Configure Ultisnips and YouCompleteMe
 " ---------------------------------- "
-let g:ycm_filetype_blacklist = {
-        \ 'tagbar' : 1,
-        \ 'qf' : 1,
-        \ 'notes' : 1,
-        \ 'markdown' : 1,
-        \ 'unite' : 1,
-        \ 'text' : 1,
-        \ 'vimwiki' : 1,
-        \ 'pandoc' : 1,
-        \ 'infolog' : 1,
-        \ 'mail' : 1,
-        \ 'python' : 1
-        \}
+"let g:ycm_filetype_blacklist = {
+"        \ 'tagbar' : 1,
+"        \ 'qf' : 1,
+"        \ 'notes' : 1,
+"        \ 'markdown' : 1,
+"        \ 'unite' : 1,
+"        \ 'text' : 1,
+"        \ 'vimwiki' : 1,
+"        \ 'pandoc' : 1,
+"        \ 'infolog' : 1,
+"        \ 'mail' : 1,
+"        \ 'python' : 1
+"        \}
 " enable completion from tags
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_key_invoke_completion = '<C-Space>'
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/ycm_default_flags.py'
-"let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+"let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+"let g:ycm_key_invoke_completion = '<C-Space>'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/ycm_default_flags.py'
+""let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " remap Ultisnips for compatibility for YCM
-let g:UltiSnipsExpandTrigger = '<C-j>'
-let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-let g:UltiSnipsListSnippets = '<c-t>'
+"let g:UltiSnipsExpandTrigger = '<C-j>'
+"let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+"let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+"let g:UltiSnipsListSnippets = '<c-t>'
 
 " Goto definition
-map <leader>g :YcmCompleter GoTo<CR>
+"map <leader>g :YcmCompleter GoTo<CR>
 
 " Extra key mapping for the pop up menu
 inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"

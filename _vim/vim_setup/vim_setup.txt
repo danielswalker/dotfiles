@@ -50,3 +50,42 @@ create ~/.tmux.conf:
 Ubuntu 12.04
 
 Follow the directions in the ubuntu_setup folder to enable solarized terminal.
+
+1.
+YouCompleteMe support for C
+
+(may) Need a newer version of gcc:
+sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+sudo apt-get update
+sudo apt-get install gcc-5 g++-5
+sudo update-alternatives --remove gcc /usr/bin/gcc-4.6
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
+
+Need a newer version of cmake (may need to do in multiple steps from version to version):
+sudo apt-get install cmake
+sudo apt-get install build-essential
+download https://cmake.org/files/v3.4/cmake-3.4.3.tar.gz
+cd ~
+mkdir cmake
+cp -r Desktop/cmake-3.4.3 cmake
+cd cmake
+mkdir _build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+make
+sudo make install
+sudo ldconfig
+
+download https://cmake.org/files/v3.4/cmake-3.8.2.tar.gz
+cd ~
+rm -rf cmake
+mkdir cmake
+cp -r Desktop/cmake-3.8.2 cmake
+cd cmake
+mkdir _build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+make
+sudo make install
+sudo ldconfig
+
+
+

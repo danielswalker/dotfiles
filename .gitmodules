@@ -13,30 +13,42 @@
 [submodule "_vim/bundle/rainbow"]
 	path = _vim/bundle/rainbow
 	url = git@github.com:luochen1990/rainbow.git
-[submodule "_vim/bundle/jedi-vim"]
-	path = _vim/bundle/jedi-vim
-	url = git@github.com:davidhalter/jedi-vim.git
 [submodule "_vim/bundle/syntastic"]
 	path = _vim/bundle/syntastic
 	url = git@github.com:scrooloose/syntastic
 [submodule "_vim/bundle/undotree"]
 	path = _vim/bundle/undotree
 	url = git@github.com:mbbill/undotree.git
-[submodule "_vim/bundle/ultisnips"]
-	path = _vim/bundle/ultisnips
-	url = git@github.com:SirVer/ultisnips.git
 [submodule "_vim/bundle/vim-colors-solarized"]
 	path = _vim/bundle/vim-colors-solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
 [submodule "_vim/bundle/vim-easymotion"]
 	path = _vim/bundle/vim-easymotion
 	url = git@github.com:easymotion/vim-easymotion.git
-[submodule "_vim/bundle/vim-snippets"]
-	path = _vim/bundle/vim-snippets
-	url = git@github.com:honza/vim-snippets.git
 [submodule "_vim/bundle/vim-tmux-navigator"]
 	path = _vim/bundle/vim-tmux-navigator
 	url = git@github.com:christoomey/vim-tmux-navigator.git
 [submodule "ubuntu_setup/gnome-terminal-colors-solarized"]
 	path = ubuntu_setup/gnome-terminal-colors-solarized
 	url = git@github.com:Anthony25/gnome-terminal-colors-solarized.git
+[submodule "_vim/bundle/vim-commentary"]
+	path = _vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "_vim/bundle/vim-surround"]
+	path = _vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "_vim/bundle/vim-fugitive"]
+	path = _vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "_vim/bundle/indentpython.vim"]
+	path = _vim/bundle/indentpython.vim
+	url = git@github.com:vim-scripts/indentpython.vim.git
+[submodule "_vim/bundle/fugitive-gitlab.vim"]
+	path = _vim/bundle/fugitive-gitlab.vim
+	url = git@github.com:shumphrey/fugitive-gitlab.vim.git
+[submodule "_vim/bundle/vim-rhubarb"]
+	path = _vim/bundle/vim-rhubarb
+	url = git@github.com:tpope/vim-rhubarb.git
+[submodule "_vim/bundle/vim-indent-object"]
+	path = _vim/bundle/vim-indent-object
+	url = git@github.com:michaeljsmith/vim-indent-object.git

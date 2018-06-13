@@ -59,7 +59,8 @@ if has('statusline')
     set statusline=%<%f\                     " Filename
     set statusline+=%w%h%m%r                 " Options
     set statusline+=\ [%{&ff}/%Y]            " Filetype
-    set statusline+=\ [%{getcwd()}]          " Current dir
+    set statusline+=%{fugitive#statusline()} " %=%-14.(%l,%c%V%)\ %P
+    " set statusline+=\ [%{getcwd()}]          " Current dir
     set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
@@ -83,6 +84,11 @@ set nowrap                  " don't wrap text
 set linebreak               " don't wrap textin the middle of a word
 set autoindent              " always set autoindenting on
 set smartindent             " use smart indent if there is no indent file
+autocmd BufRead *.py inoremap # X<c-h>#
+autocmd User fugitive
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
 set tabstop=4               " <tab> inserts 4 spaces
 set shiftwidth=2            " but an indent level is 2 spaces wide.
 set softtabstop=2           " <BS> over an autoindent deletes both spaces.
@@ -138,9 +144,13 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Plugins
 " ==========================================================
 
+" Fugitive and Fugitive-gitlab
+let g:fugitive_gitlab_domains = ['https://code.earth.planet.com']
+
 " Syntastic
-let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_python_checkers = ['flake8']
 "let g:syntastic_python_checkers = ['pylint', 'pep8', 'pyflakes']
+let g:syntastic_python_checkers = ['flake8']
 "let g:syntastic_python_checkers = ['pylint', 'flake8', 'pep8', 'pyflakes']
 
 " Tagbar
@@ -218,8 +228,8 @@ let g:rainbow_active = 0
 ""call rainbow#load()
 
 " Jedi VIM
-let g:jedi#usages_command = '<leader>v'
-let g:jedi#show_call_signatures = 1
+"let g:jedi#usages_command = '<leader>v'
+"let g:jedi#show_call_signatures = 1
 "let g:jedi#popup_select_first = 1
 
 " CtrlP

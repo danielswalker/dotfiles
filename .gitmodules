@@ -1,54 +1,54 @@
-[submodule "_vim/bundle/nerdtree"]
-	path = _vim/bundle/nerdtree
+[submodule "vim/_vim/bundle/nerdtree"]
+	path = vim/_vim/bundle/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git
-[submodule "_vim/bundle/ctrlp.vim"]
-	path = _vim/bundle/ctrlp.vim
+[submodule "vim/_vim/bundle/ctrlp.vim"]
+	path = vim/_vim/bundle/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
-[submodule "_vim/bundle/tagbar"]
-	path = _vim/bundle/tagbar
+[submodule "vim/_vim/bundle/tagbar"]
+	path = vim/_vim/bundle/tagbar
 	url = git@github.com:majutsushi/tagbar
-[submodule "_vim/bundle/pydoc.vim"]
-	path = _vim/bundle/pydoc.vim
+[submodule "vim/_vim/bundle/pydoc.vim"]
+	path = vim/_vim/bundle/pydoc.vim
 	url = git@github.com:fs111/pydoc.vim.git
-[submodule "_vim/bundle/rainbow"]
-	path = _vim/bundle/rainbow
+[submodule "vim/_vim/bundle/rainbow"]
+	path = vim/_vim/bundle/rainbow
 	url = git@github.com:luochen1990/rainbow.git
-[submodule "_vim/bundle/syntastic"]
-	path = _vim/bundle/syntastic
+[submodule "vim/_vim/bundle/syntastic"]
+	path = vim/_vim/bundle/syntastic
 	url = git@github.com:scrooloose/syntastic
-[submodule "_vim/bundle/undotree"]
-	path = _vim/bundle/undotree
+[submodule "vim/_vim/bundle/undotree"]
+	path = vim/_vim/bundle/undotree
 	url = git@github.com:mbbill/undotree.git
-[submodule "_vim/bundle/vim-colors-solarized"]
-	path = _vim/bundle/vim-colors-solarized
+[submodule "vim/_vim/bundle/vim-colors-solarized"]
+	path = vim/_vim/bundle/vim-colors-solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
-[submodule "_vim/bundle/vim-easymotion"]
-	path = _vim/bundle/vim-easymotion
+[submodule "vim/_vim/bundle/vim-easymotion"]
+	path = vim/_vim/bundle/vim-easymotion
 	url = git@github.com:easymotion/vim-easymotion.git
-[submodule "_vim/bundle/vim-tmux-navigator"]
-	path = _vim/bundle/vim-tmux-navigator
+[submodule "vim/_vim/bundle/vim-tmux-navigator"]
+	path = vim/_vim/bundle/vim-tmux-navigator
 	url = git@github.com:christoomey/vim-tmux-navigator.git
 [submodule "ubuntu_setup/gnome-terminal-colors-solarized"]
 	path = ubuntu_setup/gnome-terminal-colors-solarized
 	url = git@github.com:Anthony25/gnome-terminal-colors-solarized.git
-[submodule "_vim/bundle/vim-commentary"]
-	path = _vim/bundle/vim-commentary
+[submodule "vim/_vim/bundle/vim-commentary"]
+	path = vim/_vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary
-[submodule "_vim/bundle/vim-surround"]
-	path = _vim/bundle/vim-surround
+[submodule "vim/_vim/bundle/vim-surround"]
+	path = vim/_vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
-[submodule "_vim/bundle/vim-fugitive"]
-	path = _vim/bundle/vim-fugitive
+[submodule "vim/_vim/bundle/vim-fugitive"]
+	path = vim/_vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "_vim/bundle/indentpython.vim"]
-	path = _vim/bundle/indentpython.vim
+[submodule "vim/_vim/bundle/indentpython.vim"]
+	path = vim/_vim/bundle/indentpython.vim
 	url = git@github.com:vim-scripts/indentpython.vim.git
-[submodule "_vim/bundle/fugitive-gitlab.vim"]
-	path = _vim/bundle/fugitive-gitlab.vim
+[submodule "vim/_vim/bundle/fugitive-gitlab.vim"]
+	path = vim/_vim/bundle/fugitive-gitlab.vim
 	url = git@github.com:shumphrey/fugitive-gitlab.vim.git
-[submodule "_vim/bundle/vim-rhubarb"]
-	path = _vim/bundle/vim-rhubarb
+[submodule "vim/_vim/bundle/vim-rhubarb"]
+	path = vim/_vim/bundle/vim-rhubarb
 	url = git@github.com:tpope/vim-rhubarb.git
-[submodule "_vim/bundle/vim-indent-object"]
-	path = _vim/bundle/vim-indent-object
+[submodule "vim/_vim/bundle/vim-indent-object"]
+	path = vim/_vim/bundle/vim-indent-object
 	url = git@github.com:michaeljsmith/vim-indent-object.git

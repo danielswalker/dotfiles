@@ -52,3 +52,6 @@
 [submodule "vim/_vim/bundle/vim-indent-object"]
 	path = vim/_vim/bundle/vim-indent-object
 	url = git@github.com:michaeljsmith/vim-indent-object.git
+[submodule "vim/_vim/bundle/vim-gutentags"]
+	path = vim/_vim/bundle/vim-gutentags
+	url = git@github.com:ludovicchabant/vim-gutentags.git

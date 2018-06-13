@@ -7,12 +7,6 @@
 [submodule "vim/_vim/bundle/tagbar"]
 	path = vim/_vim/bundle/tagbar
 	url = git@github.com:majutsushi/tagbar
-[submodule "vim/_vim/bundle/pydoc.vim"]
-	path = vim/_vim/bundle/pydoc.vim
-	url = git@github.com:fs111/pydoc.vim.git
-[submodule "vim/_vim/bundle/rainbow"]
-	path = vim/_vim/bundle/rainbow
-	url = git@github.com:luochen1990/rainbow.git
 [submodule "vim/_vim/bundle/syntastic"]
 	path = vim/_vim/bundle/syntastic
 	url = git@github.com:scrooloose/syntastic

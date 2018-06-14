@@ -26,6 +26,7 @@ set background=dark
 if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
     let g:solarized_termcolors= 16 "| 256 - 16 default. Use the 16 colors of your terminal emulator if it is solarized, a degraded 256 representation if it is not.
     let g:solarized_termtrans= 0 "| 1 - 0 default. Use the default terminal color as background to enable transparency.
+    let g:solarized_diffmode="high"
     color solarized             " Load a colorscheme
 endif
 set showmode                    " Display the current mode

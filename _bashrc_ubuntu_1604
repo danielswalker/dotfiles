@@ -122,3 +122,5 @@ export PATH="/home/danw/anaconda2/bin:$PATH"
 # mission ops
 export PATH="/home/danw/missions/ops/dev_tools/bin:$PATH"
 
+# use vim in terminal
+set -o vi

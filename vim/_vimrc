@@ -119,6 +119,9 @@ nmap <silent> <leader>/ :set invhlsearch<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" Visual searching
+vnoremap // y/<C-R>"<CR>
+
 " Don't be a vimnoob
 nnoremap <Up> <nop>
 nnoremap <Down> <nop>
@@ -235,3 +238,4 @@ let g:rainbow_active = 0
 
 " CtrlP
 map <silent> <leader>jd :CtrlPTag<cr><c-\>w
+let g:ctrlp_extensions = ['tag', 'line']

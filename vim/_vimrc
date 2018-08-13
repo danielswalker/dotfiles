@@ -22,7 +22,7 @@ set clipboard=unnamed         " allow y and p to use the OSX clipboard
 " Visual Appearance
 " ==========================================================
 set t_Co=16
-set background=dark
+" set background=dark
 if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
     let g:solarized_termcolors= 16 "| 256 - 16 default. Use the 16 colors of your terminal emulator if it is solarized, a degraded 256 representation if it is not.
     let g:solarized_termtrans= 0 "| 1 - 0 default. Use the default terminal color as background to enable transparency.
@@ -239,3 +239,17 @@ let g:rainbow_active = 0
 " CtrlP
 map <silent> <leader>jd :CtrlPTag<cr><c-\>w
 let g:ctrlp_extensions = ['tag', 'line']
+
+function! BgToggleSol()
+  if &background == "light"
+    execute ":set background=dark"
+    highlight clear SignColumn      " SignColumn should match background
+    highlight clear LineNr          " Current line number row will have same background color in relative mode
+  else
+    execute ":set background=light"
+    highlight clear SignColumn      " SignColumn should match background
+    highlight clear LineNr          " Current line number row will have same background color in relative mode
+  endif
+endfunction
+
+nnoremap <leader>ct :call BgToggleSol()<cr>

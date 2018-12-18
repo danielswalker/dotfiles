@@ -49,3 +49,6 @@
 [submodule "vim/_vim/bundle/vim-gutentags"]
 	path = vim/_vim/bundle/vim-gutentags
 	url = git@github.com:ludovicchabant/vim-gutentags.git
+[submodule "vim/_vim/bundle/vim-repeat"]
+	path = vim/_vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat

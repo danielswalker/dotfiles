@@ -245,12 +245,14 @@ function! BgToggleSol()
     execute ":set background=dark"
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
-    silent !bgdark
+    silent !~/.term_color.sh dark
+    silent !~/.tmux_tools/tmux_color.sh dark
   else
     execute ":set background=light"
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
-    silent !bglight
+    silent !~/.term_color.sh light
+    silent !~/.tmux_tools/tmux_color.sh light
   endif
 endfunction
 

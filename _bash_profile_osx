@@ -2,6 +2,24 @@ alias grep='grep --color=auto'
 
 export CLICOLOR=1
 
+bglight() {
+  echo -e "\033]50;SetProfile=light\a"
+  export COLORFGBG="12;7"
+  if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+    tmux source-file ~/.tmux_light.conf
+  fi
+}
+bgdark() {
+  echo -e "\033]50;SetProfile=dark\a"
+  export COLORFGBG="12;8"
+  if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+    tmux source-file ~/.tmux_dark.conf
+  fi
+}
+
+# get bash completions
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
 # so that homebrew programs come first in the path
 export PATH=/usr/local/bin:$PATH
 
@@ -16,10 +34,47 @@ if [ -f '/Users/danw/Downloads/google-cloud-sdk/completion.bash.inc' ]; then sou
 
 export PATH=~/Software/missions/ops/dev_tools/bin:$PATH
 
-# added by Anaconda2 installer
-export PATH="/Users/danw/anaconda2/bin:$PATH"
-
 set -o vi
+
+# fzf / ag functions for navigation
+export FZF_DEFAULT_COMMAND='ag -g ""'
+alias ag="ag -U --nonumbers"
+alias cwd="pwd | tr -d '\n' | pbcopy"
+alias histf='__tmp=$(ag "^\w" $HISTFILE | gtac | fzf) && history -s "$__tmp" && eval "$__tmp"'
+alias ll="ls -lhAG"
+alias tree="tree -alC -I 'node_modules*|.git*'"
+alias vf='__tmp=$(fzf) && history -s "vim $__tmp" && vim $__tmp'
+function cl() { cd "$@" && ll; }
+function histt() { history | ag "$@"; }
+function path() { __tmp=$IFS; IFS=:; printf "%s\n" $PATH; IFS=$__tmp; }
+
+# cdf() - cd into the directory of the selected file
+cdf() {
+   local file
+   local dir
+   file=$(fzf -e -q "$*") && dir=$(dirname "$file") && cd "$dir"
+}
+
+# cdh() - cd from home
+cdh() {
+   local file
+   local dir
+   file=$(locate ~ | fzf -e -q "$*") && dir=$(dirname "$file") && cd "$dir"
+}
+
+# cdr - cd from root
+cdr() {
+   local file
+   local dir
+   file=$(locate / | fzf -e -q "$*") && dir=$(dirname "$file") && cd "$dir"
+}
+
+if [ -f $HOME/.bashrc ]; then
+  source $HOME/.bashrc
+fi
 
 # added by Miniconda2 installer
 export PATH="/Users/danw/miniconda2/bin:$PATH"
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+

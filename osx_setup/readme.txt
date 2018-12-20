@@ -31,11 +31,18 @@ git config --global user.name "Daniel Walker"
 git config --global user.email "dnwlker@gmail.com"
 ln -s repos/dotfiles/vim/_vimrc .vimrc
 ln -s repos/dotfiles/vim/_vim .vim
+ls -s repos/dotfiles/_tmux_osx.conf .tmux.conf
 
 make "light" and "dark" profiles in iterm2 - set to solarized light and dark
+in profiles Terminal > Notifications check silence bell and uncheck show bell
 make bglight and bgdark bash functions in .bash_profile - set COLORFGBG
 let vim user COLORFGBG to choose vim colorscheme
-add ctrl-<hjkl> for switching active panes to iterm2 bindings
+add ctrl-<hjkl> for switching active panes to iterm2 bindings  # note this does
+# not work well because it interferes with vim detecting these strokes
+iterm2 > preferences > appearance > uncheck Dimming/dim inactive split panes
+iterm2 > perferences > general > Applications may access clipboard
+brew install tmux
+brew install reattach-to-user-namespace  # for tmux
 
 brew cask install homebrew/cask-drivers/synology-drive
 
@@ -44,6 +51,7 @@ brew install bash-completion
 brew install the_silver_searcher
 
 # bash completion, key bindings, fuzzy auto complete
+brew install fzf
 /usr/local/opt/fzf/install y y y
 
 # for gtac (tac)

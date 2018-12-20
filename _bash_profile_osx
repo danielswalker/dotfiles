@@ -5,8 +5,10 @@ export CLICOLOR=1
 bgdark() {
   export THEME="dark"
   export COLORFGBG="12;8"
-  # switch to dark colored iterm profile
-  osascript -e 'tell app "System Events" to keystroke "d" using {option down, control down, command down}'
+  if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+    # switch to dark colored iterm profile
+    osascript -e 'tell app "System Events" to keystroke "d" using {option down, control down, command down}'
+  fi
   if { [ "$TERM" = "screen-256color" ] && [ -n "$TMUX" ]; } then
     tmux source-file ~/.tmux_dark.conf
   fi
@@ -15,8 +17,10 @@ export -f bgdark
 bglight() {
   export THEME="light"
   export COLORFGBG="12;7"
-  # switch to light colored iterm profile
-  osascript -e 'tell app "System Events" to keystroke "l" using {option down, control down, command down}'
+  if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+    # switch to light colored iterm profile
+    osascript -e 'tell app "System Events" to keystroke "l" using {option down, control down, command down}'
+  fi
   if { [ "$TERM" = "screen-256color" ] && [ -n "$TMUX" ]; } then
     tmux source-file ~/.tmux_light.conf
   fi

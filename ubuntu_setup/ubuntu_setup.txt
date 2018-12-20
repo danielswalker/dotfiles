@@ -3,8 +3,19 @@ cd gnome-terminal-colors-solarized/
 ./set_dark.sh
 agree to download the correct ls colors.
 
-then copy the provided bashrc file to ~/.bashrc (this bashrc points to the 
+then copy the provided bashrc file to ~/.bashrc (this bashrc points to the
 location of the new dircolors file)
+
+TERMINAL PROFILES
+add a couple of profiles, designate a default.  make sure the default is
+based on the solarized palette.  bashrc provides bglight bgdark and bgtoggle
+which require reading the default profile using gconf
+
+SYMBOLIC LINKS
+ln -s dotfiles/_bashrc_ubuntu_16_04 .bashrc
+ln -s dotfiles/_tmux_ubuntu.conf .tmux.conf
+ln -s dotfiles/_tmux_tools/ .tmux_tools
+ln -s dotfiles/_gnome_color.sh .term_color.sh
 
 BUILD VIM FROM SOURCE
 sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
@@ -45,3 +56,4 @@ sudo update-alternatives --set vi /usr/bin/vim
 # TMUX copy paste
 get tmux >= 2.4
 sudo apt-get install --assume-yes xclip
+

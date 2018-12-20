@@ -124,3 +124,21 @@ export PATH="/home/danw/missions/ops/dev_tools/bin:$PATH"
 
 # use vim in terminal
 set -o vi
+
+bgdark() {
+  export COLORFGBG="12;8" && export THEME="dark"
+  ~/.term_color.sh dark && ~/.tmux_tools/tmux_color.sh dark
+}
+export -f bgdark
+bglight() {
+  export COLORFGBG="12;7" && export THEME="light"
+  ~/.term_color.sh light && ~/.tmux_tools/tmux_color.sh light
+}
+export -f bglight
+bgtoggle() {
+  if [ "$THEME" = "light" ]; then
+    bgdark
+  else
+    bglight
+  fi
+}

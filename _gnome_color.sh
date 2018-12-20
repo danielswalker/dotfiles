@@ -23,9 +23,6 @@ set_dark() {
   dconf write /org/gnome/terminal/legacy/profiles:/:$profile_id/bold-color "'$base1'"
   export THEME="dark"
   export COLORFGBG="12;8"
-  if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-    tmux source-file ~/.tmux_dark.conf
-  fi
 }
 
 set_light() {
@@ -34,9 +31,6 @@ set_light() {
   dconf write /org/gnome/terminal/legacy/profiles:/:$profile_id/bold-color "'$base01'"
   export THEME="light"
   export COLORFGBG="12;7"
-  if { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-    tmux source-file ~/.tmux_light.conf
-  fi
 }
 
 # http://www.tldp.org/LDP/abs/html/comparison-ops.html

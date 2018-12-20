@@ -32,10 +32,15 @@ git config --global user.email "dnwlker@gmail.com"
 ln -s repos/dotfiles/vim/_vimrc .vimrc
 ln -s repos/dotfiles/vim/_vim .vim
 ls -s repos/dotfiles/_tmux_osx.conf .tmux.conf
+ls -s repos/dotfiles/tmux_light.conf .tmux_light.conf
+ls -s repos/dotfiles/tmux_dark.conf .tmux_dark.conf
 
 make "light" and "dark" profiles in iterm2 - set to solarized light and dark
 in profiles Terminal > Notifications check silence bell and uncheck show bell
-make bglight and bgdark bash functions in .bash_profile - set COLORFGBG
+set a complicated keystroke to switch to light profile
+set a complicated keystroek to switch to dark profile
+make bglight and bgdark bash functions in .bash_profile - set COLORFGBG, and 
+source-file tmux colors if in a tmux session, and switch profiles
 let vim user COLORFGBG to choose vim colorscheme
 add ctrl-<hjkl> for switching active panes to iterm2 bindings  # note this does
 # not work well because it interferes with vim detecting these strokes

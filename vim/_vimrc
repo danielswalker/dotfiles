@@ -245,10 +245,12 @@ function! BgToggleSol()
     execute ":set background=dark"
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
+    silent !bgdark
   else
     execute ":set background=light"
     highlight clear SignColumn      " SignColumn should match background
     highlight clear LineNr          " Current line number row will have same background color in relative mode
+    silent !bglight
   endif
 endfunction
 

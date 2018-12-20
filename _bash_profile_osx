@@ -2,18 +2,31 @@ alias grep='grep --color=auto'
 
 export CLICOLOR=1
 
+bgdark() {
+  export THEME="dark"
+  export COLORFGBG="12;8"
+  # switch to dark colored iterm profile
+  osascript -e 'tell app "System Events" to keystroke "d" using {option down, control down, command down}'
+  if { [ "$TERM" = "screen-256color" ] && [ -n "$TMUX" ]; } then
+    tmux source-file ~/.tmux_dark.conf
+  fi
+}
+export -f bgdark
 bglight() {
-  echo -e "\033]50;SetProfile=light\a"
+  export THEME="light"
   export COLORFGBG="12;7"
-  if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+  # switch to light colored iterm profile
+  osascript -e 'tell app "System Events" to keystroke "l" using {option down, control down, command down}'
+  if { [ "$TERM" = "screen-256color" ] && [ -n "$TMUX" ]; } then
     tmux source-file ~/.tmux_light.conf
   fi
 }
-bgdark() {
-  echo -e "\033]50;SetProfile=dark\a"
-  export COLORFGBG="12;8"
-  if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-    tmux source-file ~/.tmux_dark.conf
+export -f bglight
+bgtoggle() {
+  if [ "$THEME" = "light" ]; then
+    bgdark
+  else
+    bglight
   fi
 }
 
@@ -77,4 +90,3 @@ fi
 export PATH="/Users/danw/miniconda2/bin:$PATH"
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-

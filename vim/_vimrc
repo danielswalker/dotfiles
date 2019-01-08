@@ -57,12 +57,12 @@ endif
 
 if has('statusline')
     set laststatus=2            " Always show statusline, even if only 1 window.
-    set statusline=%<%f                     " Filename
-    set statusline+=\ %w%h%m%r                 " Options
-    set statusline+=\ [%{&ff}/%Y]            " Filetype
-    set statusline+=\ %{fugitive#statusline()} " %=%-14.(%l,%c%V%)\ %P
-    " set statusline+=\ [%{getcwd()}]          " Current dir
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    " set statusline=%<%f                     " Filename
+    " set statusline+=\ %w%h%m%r                 " Options
+    " set statusline+=\ [%{&ff}/%Y]            " Filetype
+    " set statusline+=\ %{fugitive#statusline()} " %=%-14.(%l,%c%V%)\ %P
+    " " set statusline+=\ [%{getcwd()}]          " Current dir
+    " set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
 " ==========================================================
@@ -249,6 +249,15 @@ function! BgToggleSol()
     silent !~/.term_color.sh light
     silent !~/.tmux_tools/tmux_color.sh light
   endif
+  if exists("g:lightline")
+    runtime autoload/lightline/colorscheme/solarized.vim
+    call lightline#colorscheme()
+  endif
 endfunction
 
 nnoremap <leader>ct :call BgToggleSol()<cr>
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
+set noshowmode

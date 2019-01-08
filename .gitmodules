@@ -49,3 +49,6 @@
 [submodule "vim/_vim/bundle/vim-repeat"]
 	path = vim/_vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+[submodule "vim/_vim/bundle/lightline.vim"]
+	path = vim/_vim/bundle/lightline.vim
+	url = https://github.com/itchyny/lightline.vim

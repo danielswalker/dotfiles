@@ -1,23 +1,36 @@
 SOLARIZE THE TERMINAL
-cd gnome-terminal-colors-solarized/
-./set_dark.sh
-agree to download the correct ls colors.
 
 then copy the provided bashrc file to ~/.bashrc (this bashrc points to the
 location of the new dircolors file)
 
-TERMINAL PROFILES
-add a couple of profiles, designate a default.  make sure the default is
-based on the solarized palette.  bashrc provides bglight bgdark and bgtoggle
-which require reading the default profile using gconf
+TERM COLOR - early Ubuntu
+use profile named Default. bashrc provides bglight bgdark and bgtoggle which
+adjust colors for solarized profile
+ln -s repos/dotfiles/_gnome_old_color.sh .term_color.sh
+
+TERMINAL PROFILES - later Ubuntu
+add a profile, designate a default.  make sure the default is
+based on the solarized palette:
+cd gnome-terminal-colors-solarized/
+./set_dark.sh
+agree to download the correct ls colors.
+bashrc provides bglight bgdark and bgtoggle
+which require reading the default profile using dconf (look at term_color.sh)
+ln -s repos/dotfiles/_gnome_color.sh .term_color.sh
 
 SYMBOLIC LINKS
-ln -s dotfiles/_bashrc_ubuntu_16_04 .bashrc
-ln -s dotfiles/_tmux_ubuntu.conf .tmux.conf
-ln -s dotfiles/_tmux_tools/ .tmux_tools
-ln -s dotfiles/_gnome_color.sh .term_color.sh
+ln -s repos/dotfiles/_bashrc_ubuntu_16_04 .bashrc
+ln -s repos/dotfiles/_tmux_ubuntu.conf .tmux.conf
+ln -s repos/dotfiles/_tmux_tools/ .tmux_tools
+ln -s repos/dotfiles/vim/_vimrc .vimrc
+ln -s repos/dotfiles/vim/_vim .vim
 
-BUILD VIM FROM SOURCE
+USE A PPA FOR LATEST VIM
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-get update
+sudo apt-get install vim
+
+OR - BUILD VIM FROM SOURCE
 sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
 libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
 libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \

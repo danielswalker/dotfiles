@@ -1,12 +1,24 @@
 export CLICOLOR=1
 
-bglight() {
-  echo -e "\033]50;SetProfile=light\a"
-  export COLORFGBG="12;7"
-}
+set -o vi
+export EDITOR=vim
+
 bgdark() {
-  echo -e "\033]50;SetProfile=dark\a"
-  export COLORFGBG="12;8"
+  export COLORFGBG="12;8" && export THEME="dark"
+  ~/.term_color.sh dark && ~/.tmux_tools/tmux_color.sh dark
+}
+export -f bgdark
+bglight() {
+  export COLORFGBG="12;7" && export THEME="light"
+  ~/.term_color.sh light && ~/.tmux_tools/tmux_color.sh light
+}
+export -f bglight
+bgtoggle() {
+  if [ "$THEME" = "light" ]; then
+    bgdark
+  else
+    bglight
+  fi
 }
 
 # get bash completions
@@ -56,8 +68,6 @@ if [ -f $HOME/.bashrc ]; then
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-
 
 # added by Miniconda2 installer
 export PATH="/Users/dsw/miniconda2/bin:$PATH"

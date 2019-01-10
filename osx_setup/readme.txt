@@ -25,15 +25,18 @@ brew install tree
 brew install ack
 brew install ctags
 
+brew install tmux
+brew install reattach-to-user-namespace
+
 ln -s repos/dotfiles/_bash_profile_osx_10_13 ~/.bash_profile
 
 git config --global user.name "Daniel Walker"
 git config --global user.email "dnwlker@gmail.com"
 ln -s repos/dotfiles/vim/_vimrc .vimrc
 ln -s repos/dotfiles/vim/_vim .vim
-ls -s repos/dotfiles/_tmux_osx.conf .tmux.conf
-ls -s repos/dotfiles/tmux_light.conf .tmux_light.conf
-ls -s repos/dotfiles/tmux_dark.conf .tmux_dark.conf
+ln -s repos/dotfiles/_tmux_osx.conf .tmux.conf
+ln -s repos/dotfiles/_tmux_tools .tmux_tools
+ln -s repos/dotfiles/_iterm_color.sh .term_color.sh
 
 make "light" and "dark" profiles in iterm2 - set to solarized light and dark
 in profiles Terminal > Notifications check silence bell and uncheck show bell

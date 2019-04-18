@@ -76,7 +76,6 @@ if [ -f $HOME/.bashrc ]; then
   source $HOME/.bashrc
 fi
 
-# added by Miniconda2 installer
 export PATH="/Users/danw/miniconda2/bin:$PATH"
-
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+. /Users/danw/miniconda2/etc/profile.d/conda.sh

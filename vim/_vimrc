@@ -16,19 +16,26 @@ filetype plugin indent on     " enable loading indent file for filetype
 set title                     " show title in console title bar
 set autoread                  " update the open file if it has been rewritten but unmodified in vim
 au CursorHold * checktime     " check for updates to files whenever the cursor stops moving for a couple of seconds
-set clipboard=unnamed         " allow y and p to use the OSX clipboard
+"set clipboard=unnamed         " allow y and p to use the OSX clipboard
+set clipboard=unnamedplus     " allow y and p to use the clipboard
 
 " ==========================================================
 " Visual Appearance
 " ==========================================================
-set t_Co=16
+" appearance of terminal buffers
+set t_Co=256
+set term=xterm-256color
+" set term=xterm-16color
+" set t_Co=16
 " set background=dark
 if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
     let g:solarized_termcolors= 16 "| 256 - 16 default. Use the 16 colors of your terminal emulator if it is solarized, a degraded 256 representation if it is not.
-    let g:solarized_termtrans= 0 "| 1 - 0 default. Use the default terminal color as background to enable transparency.
+    " let g:solarized_termtrans= 0 "| 1 - 0 default. Use the default terminal color as background to enable transparency.
+    let g:solarized_termtrans= 1 "| 1 - 0 default. Use the default terminal color as background to enable transparency.
     let g:solarized_diffmode="high"
     color solarized             " Load a colorscheme
 endif
+
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
 highlight clear SignColumn      " SignColumn should match background
@@ -45,9 +52,27 @@ set scrolloff=3                 " Minimum lines to keep above and below cursor
 set foldenable                  " Auto fold code
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-if exists("&colorcolumn")
-    set colorcolumn=79
-endif
+" if exists("&colorcolumn")
+"     " set colorcolumn=79
+"     set textwidth=100
+"     set colorcolumn=100
+"     autocmd bufreadpre *.py setlocal textwidth=79
+"     autocmd bufreadpre *.py setlocal colorcolumn=79
+" endif
+
+" Set wrapping/textwidth according to file location and type
+function! SetupEnvironment()
+  let l:path = expand('%:p')
+  if (&ft == 'cpp' || &ft == 'proto')
+    setlocal textwidth=100
+    setlocal colorcolumn=100
+  else
+    " default textwidth slightly narrower than the default
+    setlocal textwidth=79
+    setlocal colorcolumn=79
+  endif
+endfunction
+autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
 
 if has('cmdline_info')
     set ruler                   " Show the ruler
@@ -64,9 +89,6 @@ if has('statusline')
     " " set statusline+=\ [%{getcwd()}]          " Current dir
     " set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
-
-" appearance of terminal buffers
-set term=xterm-256color
 
 " ==========================================================
 " Editing and Cursor Navigation
@@ -107,12 +129,26 @@ set foldlevel=99            " don't fold by default
 " ==========================================================
 
 let g:netrw_banner = 0
+let g:netrw_altv = 1
 let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+" initialize fzf
+set rtp+=~/.fzf
 
 " ==========================================================
 " Key Remapping
 " ==========================================================
 let mapleader=","             " change the leader to be a comma vs slash
+
+" FZF based mappings
+nmap <leader>; :Buffers<CR>
+nmap <leader>' :History<CR>
+nmap <leader>> :History:<CR>
+
+" copy filename, fullpath, or dirpath to unnamed register
+noremap <leader>cf :let @" = expand("%:t")<cr>
+noremap <leader>cp :let @" = expand("%:p")<cr>
+noremap <leader>cd :let @" = expand("%:h")<cr>
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 noremap j gj
@@ -149,6 +185,7 @@ nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
+nnoremap <leader>. :to 40vs `dirname %`<cr>
 
 " Quick edit .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>

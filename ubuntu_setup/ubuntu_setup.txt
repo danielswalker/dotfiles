@@ -25,12 +25,12 @@ ln -s repos/dotfiles/_tmux_tools/ .tmux_tools
 ln -s repos/dotfiles/vim/_vimrc .vimrc
 ln -s repos/dotfiles/vim/_vim .vim
 
-USE A PPA FOR LATEST VIM
+USE A PPA FOR LATEST VIM (likely doesn't have clipboard)
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt-get update
 sudo apt-get install vim
 
-OR - BUILD VIM FROM SOURCE
+OR - BUILD VIM FROM SOURCE (can add clipboard)
 sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
 libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
 libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
@@ -53,7 +53,8 @@ cd vim
             --enable-perlinterp=yes \
             --enable-luainterp=yes \
             --enable-gui=gtk2 --enable-cscope --prefix=/usr
-sudo make VIMRUNTIMEDIR=/usr/share/vim/vim80
+// sudo make VIMRUNTIMEDIR=/usr/share/vim/vim80 (old)
+sudo make VIMRUNTIMEDIR=/usr/share/vim/vim81
 
 sudo apt-get install checkinstall
 cd ~/vim
@@ -70,3 +71,9 @@ sudo update-alternatives --set vi /usr/bin/vim
 get tmux >= 2.4
 sudo apt-get install --assume-yes xclip
 
+# AG
+sudo apt-get install silversearcher-ag
+
+# FZF
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install

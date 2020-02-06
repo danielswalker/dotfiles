@@ -119,12 +119,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# added by Anaconda2 installer
-export PATH="/home/danw/anaconda2/bin:$PATH"
-
-# mission ops
-export PATH="/home/danw/missions/ops/dev_tools/bin:$PATH"
-
 # use vim in terminal
 set -o vi
 
@@ -145,3 +139,35 @@ bgtoggle() {
     bglight
   fi
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# UBUNTU BIONIC
+export AWS_OKTA_BACKEND=secret-service
+# UBUNTU XENIAL
+export AWS_OKTA_BACKEND=file
+source '/home/lyft/repos/awsaccess/awsaccess2.sh' # awsaccess
+source '/home/lyft/repos/awsaccess/oktaawsaccess.sh' # oktaawsaccess
+export PS1="\$(ps1_mfa_context)$PS1" # awsaccess
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/lyft/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/lyft/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/lyft/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/lyft/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+conda deactivate
+
+# start ssh-agent on login
+eval $(keychain --eval id_rsa)
+
+export PATH=$HOME/bin:$PATH
+export KUBECONFIG="$HOME/repos/avops/kubernetes/config"

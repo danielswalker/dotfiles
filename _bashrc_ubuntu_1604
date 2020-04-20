@@ -142,14 +142,6 @@ bgtoggle() {
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# UBUNTU BIONIC
-export AWS_OKTA_BACKEND=secret-service
-# UBUNTU XENIAL
-export AWS_OKTA_BACKEND=file
-source '/home/lyft/repos/awsaccess/awsaccess2.sh' # awsaccess
-source '/home/lyft/repos/awsaccess/oktaawsaccess.sh' # oktaawsaccess
-export PS1="\$(ps1_mfa_context)$PS1" # awsaccess
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/lyft/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"

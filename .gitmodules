@@ -52,3 +52,6 @@
 [submodule "vim/_vim/bundle/lightline.vim"]
 	path = vim/_vim/bundle/lightline.vim
 	url = https://github.com/itchyny/lightline.vim
+[submodule "vim/_vim/bundle/fzf.vim"]
+	path = vim/_vim/bundle/fzf.vim
+	url = https://github.com/junegunn/fzf.vim

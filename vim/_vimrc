@@ -16,8 +16,8 @@ filetype plugin indent on     " enable loading indent file for filetype
 set title                     " show title in console title bar
 set autoread                  " update the open file if it has been rewritten but unmodified in vim
 au CursorHold * checktime     " check for updates to files whenever the cursor stops moving for a couple of seconds
-"set clipboard=unnamed         " allow y and p to use the OSX clipboard
-set clipboard=unnamedplus     " allow y and p to use the clipboard
+set clipboard=unnamed         " allow y and p to use the OSX clipboard
+" set clipboard=unnamedplus     " allow y and p to use the clipboard
 
 " ==========================================================
 " Visual Appearance
@@ -133,7 +133,8 @@ let g:netrw_altv = 1
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 " initialize fzf
-set rtp+=~/.fzf
+"set rtp+=~/.fzf
+set rtp+=/usr/local/opt/fzf
 
 " ==========================================================
 " Key Remapping

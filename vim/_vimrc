@@ -264,27 +264,27 @@ let g:rainbow_active = 0
 map <silent> <leader>jd :CtrlPTag<cr><c-\>w
 let g:ctrlp_extensions = ['tag', 'line']
 
-" function! BgToggleSol()
-"   if &background == "light"
-"     execute ":set background=dark"
-"     highlight clear SignColumn      " SignColumn should match background
-"     highlight clear LineNr          " Current line number row will have same background color in relative mode
-"     silent !~/.term_color.sh dark
-"     silent !~/.tmux_tools/tmux_color.sh dark
-"   else
-"     execute ":set background=light"
-"     highlight clear SignColumn      " SignColumn should match background
-"     highlight clear LineNr          " Current line number row will have same background color in relative mode
-"     silent !~/.term_color.sh light
-"     silent !~/.tmux_tools/tmux_color.sh light
-"   endif
-"   if exists("g:lightline")
-"     runtime autoload/lightline/colorscheme/solarized.vim
-"     call lightline#colorscheme()
-"   endif
-" endfunction
+function! BgToggleSol()
+  if &background == "light"
+    execute ":set background=dark"
+    " highlight clear SignColumn      " SignColumn should match background
+    " highlight clear LineNr          " Current line number row will have same background color in relative mode
+    " silent !~/.term_color.sh dark
+    " silent !~/.tmux_tools/tmux_color.sh dark
+  else
+    execute ":set background=light"
+    " highlight clear SignColumn      " SignColumn should match background
+    " highlight clear LineNr          " Current line number row will have same background color in relative mode
+    " silent !~/.term_color.sh light
+    " silent !~/.tmux_tools/tmux_color.sh light
+  endif
+  if exists("g:lightline")
+    runtime autoload/lightline/colorscheme/solarized.vim
+    call lightline#colorscheme()
+  endif
+endfunction
 
-" nnoremap <leader>ct :call BgToggleSol()<cr>
+nnoremap <leader>ct :call BgToggleSol()<cr>
 
 " if exists("g:lightline")
 "   runtime autoload/lightline/colorscheme/solarized.vim

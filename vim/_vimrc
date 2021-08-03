@@ -25,22 +25,13 @@ set clipboard=unnamed         " allow y and p to use the OSX clipboard
 " appearance of terminal buffers
 set t_Co=256
 set term=xterm-256color
-" set term=xterm-16color
-" set t_Co=16
-" set background=dark
-if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-    let g:solarized_termcolors= 16 "| 256 - 16 default. Use the 16 colors of your terminal emulator if it is solarized, a degraded 256 representation if it is not.
-    " let g:solarized_termtrans= 0 "| 1 - 0 default. Use the default terminal color as background to enable transparency.
-    let g:solarized_termtrans= 1 "| 1 - 0 default. Use the default terminal color as background to enable transparency.
-    let g:solarized_diffmode="high"
-    color solarized             " Load a colorscheme
-endif
+colorscheme solarized
 
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
 highlight clear SignColumn      " SignColumn should match background
 highlight clear LineNr          " Current line number row will have same background color in relative mode
-"highlight clear CursorLineNr    " Remove highlight color from current line number
+highlight clear CursorLineNr    " Remove highlight color from current line number
 set linespace=0                 " No extra spaces between rows
 set number                      " Line numbers on
 set showmatch                   " Show matching brackets/parenthesis
@@ -52,13 +43,6 @@ set scrolloff=3                 " Minimum lines to keep above and below cursor
 set foldenable                  " Auto fold code
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-" if exists("&colorcolumn")
-"     " set colorcolumn=79
-"     set textwidth=100
-"     set colorcolumn=100
-"     autocmd bufreadpre *.py setlocal textwidth=79
-"     autocmd bufreadpre *.py setlocal colorcolumn=79
-" endif
 
 " Set wrapping/textwidth according to file location and type
 function! SetupEnvironment()
@@ -74,20 +58,14 @@ function! SetupEnvironment()
 endfunction
 autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
 
-if has('cmdline_info')
-    set ruler                   " Show the ruler
-    set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
-    set showcmd                 " Show partial commands in status line and selected characters/lines in visual mode
-endif
+" if has('cmdline_info')
+"     set ruler                   " Show the ruler
+"     set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+"     set showcmd                 " Show partial commands in status line and selected characters/lines in visual mode
+" endif
 
 if has('statusline')
     set laststatus=2            " Always show statusline, even if only 1 window.
-    " set statusline=%<%f                     " Filename
-    " set statusline+=\ %w%h%m%r                 " Options
-    " set statusline+=\ [%{&ff}/%Y]            " Filetype
-    " set statusline+=\ %{fugitive#statusline()} " %=%-14.(%l,%c%V%)\ %P
-    " " set statusline+=\ [%{getcwd()}]          " Current dir
-    " set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
 " ==========================================================
@@ -207,7 +185,7 @@ nnoremap <leader>R :call RunLastLastTerm()<cr>
 " ==========================================================
 
 " Fugitive and Fugitive-gitlab
-let g:fugitive_gitlab_domains = ['https://code.earth.planet.com']
+" let g:fugitive_gitlab_domains = ['https://code.earth.planet.com']
 
 " Syntastic
 "let g:syntastic_python_checkers = ['flake8']
@@ -286,28 +264,32 @@ let g:rainbow_active = 0
 map <silent> <leader>jd :CtrlPTag<cr><c-\>w
 let g:ctrlp_extensions = ['tag', 'line']
 
-function! BgToggleSol()
-  if &background == "light"
-    execute ":set background=dark"
-    highlight clear SignColumn      " SignColumn should match background
-    highlight clear LineNr          " Current line number row will have same background color in relative mode
-    silent !~/.term_color.sh dark
-    silent !~/.tmux_tools/tmux_color.sh dark
-  else
-    execute ":set background=light"
-    highlight clear SignColumn      " SignColumn should match background
-    highlight clear LineNr          " Current line number row will have same background color in relative mode
-    silent !~/.term_color.sh light
-    silent !~/.tmux_tools/tmux_color.sh light
-  endif
-  if exists("g:lightline")
-    runtime autoload/lightline/colorscheme/solarized.vim
-    call lightline#colorscheme()
-  endif
-endfunction
+" function! BgToggleSol()
+"   if &background == "light"
+"     execute ":set background=dark"
+"     highlight clear SignColumn      " SignColumn should match background
+"     highlight clear LineNr          " Current line number row will have same background color in relative mode
+"     silent !~/.term_color.sh dark
+"     silent !~/.tmux_tools/tmux_color.sh dark
+"   else
+"     execute ":set background=light"
+"     highlight clear SignColumn      " SignColumn should match background
+"     highlight clear LineNr          " Current line number row will have same background color in relative mode
+"     silent !~/.term_color.sh light
+"     silent !~/.tmux_tools/tmux_color.sh light
+"   endif
+"   if exists("g:lightline")
+"     runtime autoload/lightline/colorscheme/solarized.vim
+"     call lightline#colorscheme()
+"   endif
+" endfunction
 
-nnoremap <leader>ct :call BgToggleSol()<cr>
+" nnoremap <leader>ct :call BgToggleSol()<cr>
 
+" if exists("g:lightline")
+"   runtime autoload/lightline/colorscheme/solarized.vim
+"   call lightline#colorscheme()
+" endif
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ }

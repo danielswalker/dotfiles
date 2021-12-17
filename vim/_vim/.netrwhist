@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/Users/danwalker/repos/dotfiles'
+let g:netrw_dirhist_4='/Users/danwalker/repos/dotfiles/osx_setup'
 let g:netrw_dirhist_3='/home/lyft/avsoftware_dev0/weavein'
 let g:netrw_dirhist_2='/home/lyft/avsoftware_dev0/src/planning/lib/metrics'
 let g:netrw_dirhist_1='/home/lyft/avsoftware_dev0/src/common/geometry'
@@ -8,5 +10,3 @@ let g:netrw_dirhist_9='/home/lyft/avsoftware_dev0/src/evaluation/lib/evaluator'
 let g:netrw_dirhist_8='/home/lyft/avsoftware_dev0/src/planning/lib/metrics'
 let g:netrw_dirhist_7='/home/lyft/avsoftware_dev0/src/evaluation/lib/evaluator'
 let g:netrw_dirhist_6='/home/lyft/avsoftware_dev0/src/map/lib'
-let g:netrw_dirhist_5='/home/lyft/avsoftware/src/planning/services'
-let g:netrw_dirhist_4='/home/lyft/avsoftware/src/planning/proto'

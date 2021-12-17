@@ -58,9 +58,6 @@ brew cask install caffeine
 brew install bash-completion
 brew install the_silver_searcher
 
-# bash completion, key bindings, fuzzy auto complete
-brew install fzf
-/usr/local/opt/fzf/install y y y
 
 # for gtac (tac)
 brew install coreutils
@@ -71,8 +68,14 @@ iterm2 Profiles > Terminal > Show mark indicators, deselect
 brew install findutils
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
 #curl https://raw.githubusercontent.com/riobard/bash-powerline/master/bash-powerline.sh > ~/.bash-powerline.sh
-
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/powerline/fonts.git --depth=1
+./install.sh
 brew install exiftool
+
+# bash completion, key bindings, fuzzy auto complete
+brew install fzf
+/usr/local/opt/fzf/install y y y
 
 brew install wget
 wget https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh
